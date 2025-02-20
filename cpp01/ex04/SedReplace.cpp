@@ -13,14 +13,14 @@ void SedReplace::replaceInFile(const std::string &filename, const std::string &s
         return;
     }
 
-    std::ifstream inputFile(filename);
+    std::ifstream inputFile(filename.c_str());
     if (!inputFile)
     {
         std::cerr << "Error: Cannot open file " << filename << std::endl;
         return;
     }
     std::string outputFilename = filename + ".replace";
-    std::ofstream outputFile(outputFilename);
+    std::ofstream outputFile(outputFilename.c_str());
     if (!outputFile)
     {
         std::cerr << "Error: Cannot create output file " << outputFilename << std::endl;

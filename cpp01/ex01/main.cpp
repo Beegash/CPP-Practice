@@ -2,7 +2,7 @@
 
 int main()
 {
-    int n = 5;
+    int n = 0;
     Zombie *horde = zombieHorde(n, "HordeZombie");
 
     if (horde)
