@@ -22,5 +22,21 @@ int main()
     frag.takeDamage(30);
     frag.beRepaired(15);
 
+
+    ClapTrap *clap1 = new ScavTrap("Scav-Clap");
+    ClapTrap *clap2 = new FragTrap("Frag-Clap");
+
+
+    clap1->attack("Enemy A");
+    clap2->attack("Enemy B");
+
+    clap1->takeDamage(10);
+    clap2->takeDamage(15);
+
+    clap1->beRepaired(5);
+    clap2->beRepaired(8);
+
+    delete clap1;
+    delete clap2;
     return 0;
 }
