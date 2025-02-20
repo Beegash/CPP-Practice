@@ -1,6 +1,6 @@
-NAME = zombie
+NAME = brain
 
-SRC = main.cpp Zombie.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

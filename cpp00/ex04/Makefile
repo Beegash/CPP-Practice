@@ -1,6 +1,6 @@
-NAME = zombie
+NAME = sedreplace
 
-SRC = main.cpp Zombie.cpp
+SRC = main.cpp SedReplace.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
