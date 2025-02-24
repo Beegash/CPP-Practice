@@ -2,26 +2,17 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-int main() {
-    std::cout << "\n--- Creating Dog and Cat array ---\n";
-    Animal* array[100];
-        for (int i = 0; i < 20; ++i) {
-        if (i < 10) {
-            array[i] = new Dog();
-        } else {
-            array[i] = new Cat();
-        }
-    }
-    
-    std::cout << "\n--- Deleting Dog and Cat array ---\n";
-    for (int i = 0; i < 20; ++i) {
-        delete array[i];
-    }
-    
-    std::cout << "\n--- Creating Dog and Cat with const pointers ---\n";
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
+int main()
+{
+
+    const Animal *j = new Dog();
+    const Animal *i = new Cat();
+
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
+    i->makeSound();
+    j->makeSound();
+
     delete j;
     delete i;
 
