@@ -36,8 +36,8 @@ public:
 	int getGradeRequiredToExecute() const;
 
 	void beSigned(const Bureaucrat &bureaucrat);
-
-	friend std::ostream &operator<<(std::ostream &os, const Form &form);
 };
+
+std::ostream &operator<<(std::ostream &os, const Form &form);
 
 #endif

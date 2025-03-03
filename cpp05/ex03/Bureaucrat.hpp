@@ -35,8 +35,7 @@ public:
 
     void signForm(AForm& form) const;
     void executeForm(const AForm& form) const;
-
-    friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 };
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif

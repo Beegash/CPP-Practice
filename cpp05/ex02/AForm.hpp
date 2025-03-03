@@ -47,8 +47,8 @@ public:
 
 	void beSigned(const Bureaucrat &bureaucrat);
 	virtual void execute(const Bureaucrat &executor) const = 0;
-
-	friend std::ostream &operator<<(std::ostream &os, const AForm &form);
 };
+
+std::ostream &operator<<(std::ostream &os, const AForm &form);
 
 #endif

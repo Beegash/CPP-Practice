@@ -31,8 +31,8 @@ public:
 
 	void incrementGrade();
 	void decrementGrade();
-
-	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 };
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
 #endif
