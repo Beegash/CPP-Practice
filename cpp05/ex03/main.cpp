@@ -1,47 +1,71 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 int main()
 {
+	std::cout << "\n=== INTERN TESTS ===\n" << std::endl;
+	
 	try
 	{
-		Intern intern;
-		Bureaucrat boss("Boss", 1);
-
-		AForm *form1 = intern.makeForm("shrubbery creation", "Home");
-		AForm *form2 = intern.makeForm("robotomy request", "Bender");
-		AForm *form3 = intern.makeForm("presidential pardon", "Zaphod");
-		AForm *invalidForm = intern.makeForm("unknown form", "Test");
-
+		Intern someRandomIntern;
+		Bureaucrat president("President", 1);
+		
+		// Test all form types
+		std::cout << "\n--- Shrubbery Form Creation ---\n" << std::endl;
+		AForm* form1 = someRandomIntern.makeForm("shrubbery creation", "Garden");
 		if (form1)
 		{
-			boss.signForm(*form1);
-			boss.executeForm(*form1);
+			std::cout << *form1 << std::endl;
+			president.signForm(*form1);
+			president.executeForm(*form1);
 			delete form1;
 		}
-
+		
+		std::cout << "\n--- Robotomy Form Creation ---\n" << std::endl;
+		AForm* form2 = someRandomIntern.makeForm("robotomy request", "Bender");
 		if (form2)
 		{
-			boss.signForm(*form2);
-			boss.executeForm(*form2);
+			std::cout << *form2 << std::endl;
+			president.signForm(*form2);
+			president.executeForm(*form2);
 			delete form2;
 		}
-
+		
+		std::cout << "\n--- Presidential Pardon Form Creation ---\n" << std::endl;
+		AForm* form3 = someRandomIntern.makeForm("presidential pardon", "Zaphod");
 		if (form3)
 		{
-			boss.signForm(*form3);
-			boss.executeForm(*form3);
+			std::cout << *form3 << std::endl;
+			president.signForm(*form3);
+			president.executeForm(*form3);
 			delete form3;
 		}
-
-		if (invalidForm)
+		
+		// Invalid form type test
+		std::cout << "\n--- Invalid Form Type Test ---\n" << std::endl;
+		AForm* invalid_form = someRandomIntern.makeForm("invalid form", "Test");
+		if (invalid_form)
 		{
-			delete invalidForm;
+			delete invalid_form;
 		}
+		
+		// Nullptr test for memory leak check
+		std::cout << "\n--- Nullptr Form Test ---\n" << std::endl;
+		AForm* null_form = someRandomIntern.makeForm("", "");
+		if (null_form)
+		{
+			delete null_form;
+		}
+		
 	}
-	catch (const std::exception &e)
+	catch (std::exception& e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
 	return 0;
