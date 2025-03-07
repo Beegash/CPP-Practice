@@ -17,12 +17,14 @@ public:
     class GradeTooHighException : public std::exception
     {
     public:
+        virtual ~GradeTooHighException() throw() {}
         virtual const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
     public:
+        virtual ~GradeTooLowException() throw() {}
         virtual const char *what() const throw();
     };
 

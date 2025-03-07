@@ -16,13 +16,15 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		const char *what() const throw();
+		virtual ~GradeTooHighException() throw() {}
+		virtual const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		const char *what() const throw();
+		virtual ~GradeTooLowException() throw() {}
+		virtual const char *what() const throw();
 	};
 
 	Form(const std::string &name, int gradeSign, int gradeExec);
