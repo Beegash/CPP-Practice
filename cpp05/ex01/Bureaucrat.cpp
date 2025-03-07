@@ -58,18 +58,8 @@ void Bureaucrat::signForm(Form &form) const
 	}
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return "Grade is too high!";
-}
-
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return "Grade is too low!";
-}
-
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 {
-	os << b.name << ", bureaucrat grade " << b.grade << ".";
+	os << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return os;
 }
