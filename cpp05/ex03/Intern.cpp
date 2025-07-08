@@ -15,32 +15,27 @@ Intern &Intern::operator=(const Intern &other)
 
 Intern::~Intern() {}
 
+AForm* createShrubbery(const std::string& target) { return new ShrubberyCreationForm(target); }
+AForm* createRobotomy(const std::string& target) { return new RobotomyRequestForm(target); }
+AForm* createPresidential(const std::string& target) { return new PresidentialPardonForm(target); }
+
 AForm *Intern::makeForm(const std::string &formName, const std::string &target)
 {
-	std::string formTypes[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-	AForm *forms[3] = {
-		new ShrubberyCreationForm(target),
-		new RobotomyRequestForm(target),
-		new PresidentialPardonForm(target)};
-
-	for (int i = 0; i < 3; i++)
-	{
-		if (formName == formTypes[i])
-		{
+	struct FormType {
+		const char* name;
+		AForm* (*creator)(const std::string&);
+	};
+	static const FormType formTable[] = {
+		{"shrubbery creation", createShrubbery},
+		{"robotomy request", createRobotomy},
+		{"presidential pardon", createPresidential}
+	};
+	for (size_t i = 0; i < sizeof(formTable)/sizeof(*formTable); ++i) {
+		if (formName == formTable[i].name) {
 			std::cout << "Intern creates " << formName << std::endl;
-			for (int j = 0; j < 3; j++)
-			{
-				if (i != j)
-					delete forms[j]; 
-			}
-			return forms[i];
+			return formTable[i].creator(target);
 		}
 	}
-
 	std::cout << "Error: Unknown form name '" << formName << "'" << std::endl;
-	for (int i = 0; i < 3; i++)
-	{
-		delete forms[i]; 
-	}
 	return NULL;
 }
